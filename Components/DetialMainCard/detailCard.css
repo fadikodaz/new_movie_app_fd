@@ -1,0 +1,13 @@
+.detailCardWrapper
+{
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 99;
+    width: 100%;
+    padding: 30px;
+    border-radius: 30px;
+    margin-bottom: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0,0.25);
+}

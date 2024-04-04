@@ -1,0 +1,135 @@
+.ToHeader
+{
+    position: relative;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 0 30px;
+}
+.logo
+{
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 800;
+    color: #E71D60;
+}
+.ToHeader ul
+{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    transition: 0.5s;
+}
+.ToHeader .links
+{
+    color: #666;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.ToHeader .links.active
+{
+    color: #E71D60;
+    font-weight: 700;
+}
+.Searchfield
+{
+    width: 250px;
+    height: 45px;
+    background-color: #F1F7FF;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 30px;
+}
+.Searchfield input
+{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-size: 16px;
+    color: black;
+}
+.btns
+{
+    display: none;
+}
+
+
+
+
+@media screen and (max-width: 830px){
+
+    .logo
+    {
+        font-size: 1em;
+    }
+    .Searchfield
+    {
+        position: absolute;
+        top: -200px;
+        padding: 0;
+        left: 20px;
+        padding: 0;
+        padding-left: 10px;
+        /* border: 2px solid #E71D60; */
+        width: 86%;
+        border-radius: 0;
+        transition: 0.3s;
+    } 
+    .Searchfield.openSearch
+    {
+        top: 62px;
+    }
+    .ToHeader ul
+    {
+        padding: 20px 0 20px 30px;
+        position: absolute;
+        z-index: 999;
+        top: -230px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 5px solid #E71D60;
+        transition: 0.5s;
+    }
+    .ToHeader ul.openMenu
+    {
+        top: 65px;
+    }
+    .btns
+    {
+        display: flex;
+        gap: 10px;
+    }
+    .searchBtn,
+    .menuBtn
+    {
+        display: flex;
+        font-size: 1.1em;
+        font-weight: 400;
+    }
+    .searchBtn:hover,
+    .menuBtn:hover
+    {
+        color: #E71D60;
+        cursor: pointer;
+    }
+
+}
+
+@media only screen and (max-width: 486px){
+    .ToHeader
+    {
+        height: 60px;
+        border-bottom: 2px solid #E71D60;
+    }
+}
