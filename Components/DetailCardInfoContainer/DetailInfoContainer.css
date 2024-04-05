@@ -3,7 +3,7 @@
     width: calc(100% - 200px);
 }
 /* --- WatchNow Btn and Add fav */
-.Watch_add_Btns_Wrapper
+.Watch_add_Btns
 {
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
     width: 100%;
     margin-bottom: 20px;
 }
-.Watch_add_Btns_Wrapper button
+.Watch_add_Btns button
 {
     width: 150px;
     background-color: #eee;
@@ -24,7 +24,7 @@
     font-size: 1em;
     font-weight: 400;
 }
-.Watch_add_Btns_Wrapper a
+.Watch_add_Btns a
 {
     width: 130px;
     height: 40px;
@@ -38,38 +38,38 @@
 }
 
 /* --- Movie Title --- */
-.MovieTitleWrapper
+.MovieTitle
 {
     margin-bottom: 20px;
 }
-.MovieTitleWrapper .title
+.MovieTitle .title
 {
     font-size: 2em;
     font-weight: 500;
     color: #444;
     text-decoration: none;
 }
-.MovieTitleWrapper .title:hover
+.MovieTitle .title:hover
 {
     color: #E71D60;
 }
-.MovieTitleWrapper .tagLine
+.MovieTitle .tagLine
 {
-    color: #E71D60;
+    color: #f2407b;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 350;
 }
 
 /* --- Vide trailer btn and HD btn --- */
 
-.videoType_Btns_Wrapper
+.videoType_Btns
 {
     display: flex;
     align-items: center;
     gap: 20px;
     margin-bottom: 20px;
 }
-.videoType_Btns_Wrapper button
+.videoType_Btns button
 {
     border: none;
     outline: none;
@@ -77,7 +77,7 @@
     cursor: pointer;
 }
 
-.videoType_Btns_Wrapper .trailerBtn
+.videoType_Btns .trailerBtn
 {
     width: 80px;
     height: 35px;
@@ -86,11 +86,11 @@
     border: 1px solid #333;
     border-radius: 4px;
 }
-.videoType_Btns_Wrapper .trailerBtn i
+.videoType_Btns .trailerBtn i
 {
     margin: 0 5px 0 0;
 }
-.videoType_Btns_Wrapper .hdBtn
+.videoType_Btns .hdBtn
 {
     font-size: 1em;
     width: 40px;
@@ -99,7 +99,7 @@
     border-radius: 4px;
     background-color: #fbf8f8;
 }
-.videoType_Btns_Wrapper .imdbBtn
+.videoType_Btns .imdbBtn
 {
     width: 60px;
     height: 35px;
@@ -108,20 +108,53 @@
     
     border-radius: 20px;
 }
-.videoType_Btns_Wrapper .imdbBtn:focus
+.videoType_Btns .imdbBtn:focus
 {
     border: 1px solid #f0a009;
 }
 
 
 /* --- Movie Over_view */
-.Movie_Over_View_Wrapper 
-{
-    margin-bottom: 20px;
+.MovieDetails {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+
 }
-.Movie_Over_View_Wrapper p
-{
+
+.Column {
+    flex: 1;
+    min-width: 250px; /* Ensure each column has a minimum width */
+}
+
+.MovieDetailsSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.MovieDetailsSection h4 {
+    font-weight: 550;
     color: #333;
-    /* font-size: 15px; */
-    font-weight: 400;
+}
+
+.MovieDetailsSection p {
+    font-weight: 300;
+    font-size: 14px;
+}
+.MovieDetailsSection .Genres 
+{
+    display: flex;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .Column {
+        flex-basis: 100%; /* Each column takes up full width on small screens */
+    }
+    .MovieDetails
+    {
+        flex-direction: column;
+    }
 }
