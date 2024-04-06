@@ -42,3 +42,9 @@
         padding: 0 30px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .DetailCardWrapper {
+        padding: 0 10px;
+    }
+}

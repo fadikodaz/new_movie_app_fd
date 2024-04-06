@@ -6,7 +6,6 @@ import DetailCardLoader from '../DetailCardLoader/page'
 const DetailInfoContainer = ({result}) => {
     
     const [isLoading, setIsLoading] = useState(true);
-    console.log(result)
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -26,7 +25,7 @@ const DetailInfoContainer = ({result}) => {
     ) 
      :
     
-    <div className='infoWrapper'>
+     <div className='infoWrapper'>
 
         <div className="Watch_add_Btns">
             <a className='watchBtn' target='_blank' href={result?.homepage}>
@@ -38,12 +37,12 @@ const DetailInfoContainer = ({result}) => {
                 Add to favorite
             </button>
         </div>
-        
+     
         <div className="MovieTitle">
             <a className='title' target='_blank' href={result?.homepage}>{result?.title || result?.name}</a>
             <p className="tagLine">{result?.tagline}</p>
         </div>
-        
+     
         <div className="videoType_Btns">
             <button className='trailerBtn'>
                 <i className="ri-vidicon-fill"></i> 
@@ -56,44 +55,76 @@ const DetailInfoContainer = ({result}) => {
                 IMDB
             </button>
         </div>
-        
+     
         <div className="Movie-Over_View">
             <p>{result?.overview}</p>
         </div>
-
-        <div className="MovieDetails">
-                <div className="Column">
-                    <div className="MovieDetailsSection">
-                        <h4>Released Date:</h4>
-                        <p>{result?.release_date}</p>
-                    </div>
-                    <div className="MovieDetailsSection">
-                        <h4>Genre:</h4>
-                        <div className="Genres">
-                            {result?.genres.map(gen => (
-                                <p key={gen.id}>{  ',' + gen.name }</p>
+ 
+        <div className="row">
+            <div className='columnLeft'>
+                {result && (
+                    <>
+                        <div className="row-line">
+                            <span className="type"><strong>Released Date:</strong></span> 
+                            <span className="value">{result.release_date}</span>
+                        </div>
+                        <div className="row-line">
+                            <span className="type"><strong>Genre:</strong></span> 
+                            <span className="value">
+                                {result.genres?.map((gen, index) => (
+                                    <span key={gen.id}>{index > 0 && ', '}
+                                        <a href={``} title={gen.name}>{gen.name}</a>
+                                    </span>
                                 ))}
+                            </span>
                         </div>
-                    </div>
-                </div>
-                <div className="Column">
-                    <div className="MovieDetailsSection">
-                        <h4>Duration:</h4>
-                        <p>{result?.runtime} min</p>
-                    </div>
-                    <div className="MovieDetailsSection">
-                        <h4>Production:</h4>
-                        <div className="ProductionCompanies">
-                            {result?.production_countries.map(pr => (
-                                <p key={pr.id}>{pr.name}</p>
-                            ))} 
+                        <div className="row-line">
+                            <span className="type"><strong>Casts:</strong></span> 
+                            <span className="value">
+                                {result.spoken_languages?.map((lang, index) => (
+                                    <span key={lang.id}>{index > 0 && ', '}
+                                        <a href={``} title={lang.name}>{lang.name}</a>
+                                    </span>
+                                ))}
+                            </span>
                         </div>
-                    </div>
-                </div>
+                    </>
+                )}
+            </div>
+            <div className='columnRight'>
+                {result && (
+                    <>
+                        <div className="row-line">
+                            <span className="type"><strong>Duration:</strong></span>
+                            <span className="value">{result.runtime} min</span>
+                        </div>
+                        <div className="row-line">
+                            <span className="type"><strong>Country:</strong></span> 
+                            <span className="value">
+                                {result.production_countries?.map((count, index) => (
+                                    <span key={count.id}>{index > 0 && ', '}
+                                        <a href={``} title={count.name}>{count.name}</a>
+                                    </span>
+                                ))}
+                            </span>
+                        </div>
+                        <div className="row-line">
+                            <span className="type"><strong>Production:</strong></span> 
+                            <span className="value">
+                                {result.production_companies?.map((prod, index) => (
+                                    <span key={prod.id}>{index > 0 && ', '}
+                                        <a href={``} title={prod.name}>{prod.name}</a>
+                                    </span>
+                                ))}
+                            </span>
+                        </div>
+                    </>
+                )}
+            </div>
         </div>
-
-    </div>
-
+ 
+     </div>
+     
     }
     </>
   )

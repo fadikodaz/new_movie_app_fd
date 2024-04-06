@@ -1,11 +1,11 @@
 .ToHeader
 {
     position: relative;
-    height: 80px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #E71D60;
     padding: 0 30px;
 }
 .logo
@@ -74,12 +74,11 @@
     {
         position: absolute;
         top: -200px;
-        padding: 0;
-        left: 20px;
+        left: 0px;
         padding: 0;
         padding-left: 10px;
-        /* border: 2px solid #E71D60; */
-        width: 86%;
+        border: 2px solid #ccc;
+        width: 100%;
         border-radius: 0;
         transition: 0.3s;
     } 
@@ -130,6 +129,5 @@
     .ToHeader
     {
         height: 60px;
-        border-bottom: 2px solid #E71D60;
     }
 }

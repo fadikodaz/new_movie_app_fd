@@ -5,7 +5,7 @@ import DetailInfoContainer from '../DetailCardInfoContainer/page'
 
 const DetialCard = ({result}) => {
   return (
-    <div className='detailCardWrapper'>
+    <div className='detailMainCardWrapper'>
         <ImageContainer result={result} />
         <DetailInfoContainer result={result} />
     </div>

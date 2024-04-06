@@ -1,6 +1,6 @@
 .infoWrapper
 {
-    width: calc(100% - 200px);
+    width: 100%;
 }
 /* --- WatchNow Btn and Add fav */
 .Watch_add_Btns
@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     width: 100%;
     margin-bottom: 20px;
 }
@@ -115,46 +116,64 @@
 
 
 /* --- Movie Over_view */
-.MovieDetails {
+.Movie-Over_View
+{
+    text-align: justify;
+    font-weight: 400;
+    font-size: 15px;
+    /* white-space: nowrap; */
+    max-height: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+/* Movie Other all Info */
+.row {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
     margin: 20px 0;
-
 }
 
-.Column {
+.columnLeft,
+.columnRight {
     flex: 1;
-    min-width: 250px; /* Ensure each column has a minimum width */
 }
 
-.MovieDetailsSection {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
+@media (min-width: 768px) {
+    .row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+/* 
+    .columnLeft,
+    .columnRight {
+        flex-basis: calc(50% - 15px);
+        margin-right: 30px;
+    } */
+
+    .columnRight {
+        margin-right: 0;
+    }
 }
 
-.MovieDetailsSection h4 {
-    font-weight: 550;
+.row .row-line strong {
     color: #333;
+    font-weight: 450;
+    margin-right: 10px;
 }
 
-.MovieDetailsSection p {
-    font-weight: 300;
+.row .row-line .value {
+    color: #555;
     font-size: 14px;
 }
-.MovieDetailsSection .Genres 
+.row .row-line .value a
 {
-    display: flex;
+    text-decoration: none;
+    color: #555;
 }
-
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .Column {
-        flex-basis: 100%; /* Each column takes up full width on small screens */
-    }
-    .MovieDetails
-    {
-        flex-direction: column;
-    }
+.row .row-line .value a:hover
+{
+    color: #f2407b;
 }

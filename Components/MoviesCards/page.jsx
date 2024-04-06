@@ -1,39 +1,15 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import '@/style/MovieCards.css';
 import SkeletonLoader from '@/Components/CardsSkeletonLoader/page';
 import img from '@/public/Assets/no-poster.png';
 
 const MoviesCards = ({ allData }) => {
-    const imgRef = useRef(null);
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
-    const [cachedImageURLs, setCachedImageURLs] = useState({});
     const Image_Base_Url = 'https://image.tmdb.org/t/p/original/';
-
-    useEffect(() => {
-        // Fetch cached image URLs from local storage
-        const cachedData = localStorage.getItem('cachedImageURLs');
-        if (cachedData) {
-            setCachedImageURLs(JSON.parse(cachedData));
-        }
-    }, []);
-
-    useEffect(() => {
-        // Cache image URLs
-        const fetchAndCacheImageURLs = async () => {
-            const urlsToCache = {};
-            for (const detail of allData) {
-                const imageURL = Image_Base_Url + detail?.poster_path;
-                urlsToCache[detail.id] = imageURL;
-            }
-            setCachedImageURLs(urlsToCache);
-            localStorage.setItem('cachedImageURLs', JSON.stringify(urlsToCache));
-        };
-
-        fetchAndCacheImageURLs();
-    }, [allData]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -55,15 +31,21 @@ const MoviesCards = ({ allData }) => {
 
         return (
             <div className='CardBox' key={detail?.id}>
-                {isLoading ? (
+                {
+                isLoading 
+                ? 
+                (
                     <SkeletonLoader />
-                ) : (
+                )
+                : 
+                (
                     <div className="imgBox" onClick={() => { MediaDetailHandler(type, cleanTitle, id) }}>
-                        <img
-                            ref={imgRef}
-                            src={cachedImageURLs[id] || img}
+                        <Image
+                            priority
+                            src={Image_Base_Url + detail?.poster_path || img}
                             alt={title}
-                            loading="lazy" // lazy loading
+                            width={200} // Placeholder width value
+                            height={300} // Placeholder height value
                         />
                         <div className='PlayBtn'>
                             <i className="ri-play-fill"></i>
@@ -93,3 +75,4 @@ const MoviesCards = ({ allData }) => {
 };
 
 export default MoviesCards;
+
