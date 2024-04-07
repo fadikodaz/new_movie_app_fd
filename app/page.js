@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 const Home = () => {
 
 
-  // set Button Types id for movies and tv shows
+  // set Button Types id in HOOK STATE for movies and tv shows  
   const [active, setActive] = useState(() => {
     const storedActive = localStorage.getItem('active');
     return storedActive !== null ? JSON.parse(storedActive) : 0;

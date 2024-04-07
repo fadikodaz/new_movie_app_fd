@@ -12,12 +12,9 @@ const ImageContainer = ({ result }) => {
     return (
         <div className='ContainerWrapper'>
             <div className="imgBox">
-                <Image
-                    priority
+                <img
                     src={poster}
                     alt={result?.title}
-                    width={300} // Placeholder width value
-                    height={450} // Placeholder height value
                 />
             </div>
             <div className="votingBox">

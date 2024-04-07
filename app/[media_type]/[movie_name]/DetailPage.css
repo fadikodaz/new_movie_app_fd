@@ -22,7 +22,7 @@
     padding: 0 100px;
 }
 
-.PlayBtn__Layer
+.Layer
 {
     position: absolute;
     z-index: 9;
@@ -44,7 +44,12 @@
 }
 
 @media screen and (max-width: 600px) {
+    .DeatilWrapper
+    {
+        height: 50vh;
+    }
     .DetailCardWrapper {
         padding: 0 10px;
+        bottom: -30%;
     }
 }

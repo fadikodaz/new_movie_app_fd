@@ -1,5 +1,5 @@
 .infoWrapper {
-    width: zz;
+    width: 100%;
 }
 
 .loadingSkeleton {
@@ -19,7 +19,7 @@
 }
 
 .loadingText {
-    width: 100px;
+    width: 100%;
     height: 10px;
     background-color: #ccc;
     border-radius: 4px;
@@ -48,13 +48,13 @@
 
 .watchBtn .loadingIcon,
 .addBtn .loadingIcon {
-    width: 30px;
+    width: 50%;
     height: 30px;
 }
 
 .watchBtn .loadingText,
 .addBtn .loadingText {
-    width: 150px;
+    width: 50%;
 }
 
 .videoType_Btns .loadingSkeleton {
