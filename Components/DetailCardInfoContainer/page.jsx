@@ -39,7 +39,7 @@ const DetailInfoContainer = ({result}) => {
         </div>
      
         <div className="MovieTitle">
-            <a className='title' target='_blank' href={result?.homepage}>{result?.title || result?.name}</a>
+            <a className='title' target='_blank' href={result.homepage}>{result?.title || result?.name}</a>
             <p className="tagLine">{result?.tagline}</p>
         </div>
      
@@ -66,7 +66,17 @@ const DetailInfoContainer = ({result}) => {
                     <>
                         <div className="row-line">
                             <span className="type"><strong>Released Date:</strong></span> 
-                            <span className="value">{result.release_date}</span>
+                            <span className="value">{result.release_date || result.first_air_date}</span>
+                        </div>
+                        <div className="row-line">
+                            <span className="type"><strong>{result.spoken_languages && result.spoken_languages.length > 1 ? 'Languages' : 'Language'}:</strong></span> 
+                            <span className="value">
+                                {result.spoken_languages?.map((lang, index) => (
+                                    <span key={lang.id}>{index > 0 && ', '}
+                                        <a href={``} title={lang.name && lang.english_name}>{lang.name && lang.english_name}</a>
+                                    </span>
+                                ))}
+                            </span>
                         </div>
                         <div className="row-line">
                             <span className="type"><strong>Genre:</strong></span> 
@@ -78,16 +88,6 @@ const DetailInfoContainer = ({result}) => {
                                 ))}
                             </span>
                         </div>
-                        <div className="row-line">
-                            <span className="type"><strong>Casts:</strong></span> 
-                            <span className="value">
-                                {result.spoken_languages?.map((lang, index) => (
-                                    <span key={lang.id}>{index > 0 && ', '}
-                                        <a href={``} title={lang.name}>{lang.name}</a>
-                                    </span>
-                                ))}
-                            </span>
-                        </div>
                     </>
                 )}
             </div>
@@ -95,10 +95,10 @@ const DetailInfoContainer = ({result}) => {
                 {result && (
                     <>
                         <div className="row-line">
-                            <span className="type"><strong>Duration:</strong></span>
-                            <span className="value">{result.runtime} min</span>
+                            <span className="type"><strong>{result.runtime ? 'Duration' : (result.number_of_seasons > 1 ? 'Seasons' : 'Season')}:</strong></span>
+                            <span className="value">{result.runtime ? `${result.runtime} min` : `${result.number_of_seasons} (Episodes-${result.number_of_episodes})`}</span>
                         </div>
-                        <div className="row-line">
+                        <di v className="row-line">
                             <span className="type"><strong>Country:</strong></span> 
                             <span className="value">
                                 {result.production_countries?.map((count, index) => (
@@ -107,7 +107,7 @@ const DetailInfoContainer = ({result}) => {
                                     </span>
                                 ))}
                             </span>
-                        </div>
+                        </di>
                         <div className="row-line">
                             <span className="type"><strong>Production:</strong></span> 
                             <span className="value">

@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
 import './DetailPage.css'
 import DetialCard from '@/Components/DetialMainCard/page';
 
@@ -32,9 +33,17 @@ const page = (params) => {
     <div className='DeatilWrapper'>
         <div className='PlayBtn__Layer'> </div>
 
-      <img
+      <Image
+        priority
+        width={1000}
+        height={1000}
         src={Backdrop_Image}
-        alt=""
+        alt="poster"
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        quality={100}
       />
       
       <div className='DetailCardWrapper'>

@@ -57,7 +57,7 @@ const MoviesCards = ({ allData }) => {
                 </h2>
                 <div className="Date_Type">
                     <span className='date'>
-                        {detail?.release_date}
+                        {detail?.release_date || detail?.first_air_date}
                     </span>
                     <span className='type'>
                         {detail?.media_type}
