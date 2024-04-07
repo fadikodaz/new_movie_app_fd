@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
 import './DetailPage.css'
 import DetialCard from '@/Components/DetialMainCard/page';
 
@@ -28,19 +29,26 @@ const page = (params) => {
     },[id])
     
   return (
-    <div className='DeatilWrapper'>
-      <div className='Layer'> </div>
-
-      <img
-        src={Backdrop_Image}
-        alt="poster"
-      />
+    <>
+      <div className='MainWrapperDetail'>
+      <div className='BackdropImageWrapper'>
+            <div className='Layer'> </div>
+            <img
+              src={Backdrop_Image}
+              alt="poster"
+            />
+      </div>
+        
+        <div className='DetailMainCard'>
+              <DetialCard result={result}/>
+        </div>
+      </div>
       
-      <div className='DetailCardWrapper'>
-            <DetialCard result={result}/>
+      <div className='MoreMoviesSection'>
+          <h3>You may like these</h3>
       </div>
 
-    </div>
+    </>
   )
 }
 

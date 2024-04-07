@@ -4,14 +4,14 @@ import './SkeletonLoader.css'
 
 const SkeletonLoader = () => {
   return (
-    <div className='CardBox'>
+    <div className='LoaderCardBox'>
         <div className="LoaderimgBox">
             <div className="loader"></div>
         </div>
         <div className='Loadertitle'>
             <div className="Lineloader"></div>
         </div>
-        <div className="Date_Type">
+        <div className="LoderDate_Type">
             <div className="Lineloader"></div>
             <div className="Lineloader"></div>
         </div>

@@ -1,7 +1,8 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import './ImageContainer.css';
+import img from '@/public/Assets/noPoster.png'
 
 const ImageContainer = ({ result }) => {
 
@@ -13,13 +14,13 @@ const ImageContainer = ({ result }) => {
         <div className='ContainerWrapper'>
             <div className="imgBox">
                 <img
-                    src={poster}
+                    src={poster || img}
                     alt={result?.title}
                 />
             </div>
             <div className="votingBox">
                 <span className="votingText">
-                    <strong>{vote_average}</strong> 
+                    <strong>{vote_average ? vote_average : '---'}</strong> 
                     <p> / {result?.vote_count} voted</p>
                 </span>
                 <div className="votingLine">
@@ -31,7 +32,6 @@ const ImageContainer = ({ result }) => {
                 </div>
             </div>
         </div>
-    );
-};
-
+        )
+}
 export default ImageContainer;

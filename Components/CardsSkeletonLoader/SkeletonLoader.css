@@ -1,6 +1,9 @@
+.LoaderCardBox
+{
+  width: 100%;
+}
 .LoaderimgBox
 {
-    position: relative;
     width: 100%;
     height: 200px;
     border-radius: 10px;
@@ -14,11 +17,13 @@
 {
     margin: 10px 0;
 }
-.Date_Type
+.LoderDate_Type
 {
+    display: flex;
     gap: 20px;
 }
 
+/* loader css for text */
 .loader {
     width: 64px;
     height: 64px;
@@ -116,3 +121,18 @@
       transform: translateX(100%);
     }
   }
+
+
+
+  @media only screen and (max-width: 850px){
+
+    .LoaderCardBox
+    {
+        height: 200px;
+    }
+    .Loadertitle,
+    .LoderDate_Type
+    {
+      display: none;
+    }
+}
