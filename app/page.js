@@ -7,13 +7,22 @@ const Home = () => {
 
   // set Button Types id in HOOK STATE for movies and tv shows  
   const [active, setActive] = useState(() => {
-    const storedActive = localStorage.getItem('active');
-    return storedActive !== null ? JSON.parse(storedActive) : 0;
+    // Check if localStorage is available
+    if (typeof window !== 'undefined') {
+      const storedActive = localStorage.getItem('active');
+      return storedActive !== null ? JSON.parse(storedActive) : 0;
+    } else {
+      // Handle case where localStorage is not available
+      return 0;
+    }
   });
 
   // Update localStorage whenever active state changes
   useEffect(() => {
-    localStorage.setItem('active', JSON.stringify(active));
+    // Check if localStorage is available
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('active', JSON.stringify(active));
+    }
   }, [active]);
 
   //function geting active value from btn and setting in hook state
