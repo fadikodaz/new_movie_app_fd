@@ -6,15 +6,14 @@ import '@/style/MovieCards.css';
 import SkeletonLoader from '@/Components/CardsSkeletonLoader/page';
 import img from '@/public/Assets/no-poster.png';
 
-const MoviesCards = ({ allData }) => {
+const SearchMoviesCards = ({ allData }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
-    const Image_Base_Url = 'https://image.tmdb.org/t/p/original/';
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1000);
+        }, 500);
 
         return () => clearTimeout(timer);
     }, []);
@@ -23,11 +22,12 @@ const MoviesCards = ({ allData }) => {
         router.push(`/${type}/${name}?id=${id}`);
     };
 
-    const cards = allData.map((detail,index) => {
-        let type = detail?.media_type;
-        let title = detail?.title || detail?.name;
-        let cleanTitle = title.replace(/[ :]+/g, '-');
-        let id = detail?.id;
+    const cards = allData?.map((detail,index) => {
+        const type = detail?.media_type;
+        const title = detail?.title || detail?.name;
+        const cleanTitle = title.replace(/[ :]+/g, '-');
+        const id = detail?.id;
+        const poster = `https://image.tmdb.org/t/p/original/${detail?.poster_path}`
 
         return (
             <div className='CardBox' key={detail?.id}>
@@ -42,10 +42,10 @@ const MoviesCards = ({ allData }) => {
                     <div className="imgBox" key={index} onClick={() => { MediaDetailHandler(type, cleanTitle, id) }}>
                         <Image
                             priority
-                            src={Image_Base_Url + detail?.poster_path || img}
+                            src={ poster || img }
                             alt={title}
-                            width={200} // Placeholder width value
-                            height={300} // Placeholder height value
+                            width={200}
+                            height={300}
                         />
                         <div className='PlayBtn'>
                             <i className="ri-play-fill"></i>
@@ -74,5 +74,5 @@ const MoviesCards = ({ allData }) => {
     );
 };
 
-export default MoviesCards;
+export default SearchMoviesCards;
 

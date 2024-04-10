@@ -16,8 +16,9 @@ const [activeSearchField, setActiveSearchField] = useState(false);
 const SrchQueryHandler = (e) => {
   if(e.key === 'Enter' && query.length > 0 )
   {
-    router.push(`/Search?s=${query}`)
+    router.push(`/search/${query}`)
     setSearchQuery('')
+    setActiveSearchField(false)
   }
 }
 
@@ -50,7 +51,7 @@ let list = menu.map((li,id)=>
         </div>
 
         <div className='btns'>
-{/* Search Bar or field Toggle on & off */}
+        {/* Search Bar or field Toggle on-off */}
         <span 
         className='searchBtn' 
         onClick={()=>{
@@ -59,7 +60,7 @@ let list = menu.map((li,id)=>
           }}  >
             <i className="ri-search-line"></i>
         </span>
-{/* Menu List Toggle On & Off */}
+        {/* Menu List Toggle On-Off */}
         <span 
           className='menuBtn' 
           onClick={()=>{

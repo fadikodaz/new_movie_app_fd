@@ -1,12 +1,13 @@
 'use client'
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import '@/style/MovieCards.css';
+import './watchMore.css'
 import SkeletonLoader from '@/Components/CardsSkeletonLoader/page';
 import img from '@/public/Assets/no-poster.png';
 
-const MoviesCards = ({ allData }) => {
+const WatchMoreMoviesCards = ({ allData }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const Image_Base_Url = 'https://image.tmdb.org/t/p/original/';
@@ -23,7 +24,7 @@ const MoviesCards = ({ allData }) => {
         router.push(`/${type}/${name}?id=${id}`);
     };
 
-    const cards = allData.map((detail,index) => {
+    const cards = allData?.map((detail,index) => {
         let type = detail?.media_type;
         let title = detail?.title || detail?.name;
         let cleanTitle = title.replace(/[ :]+/g, '-');
@@ -35,22 +36,22 @@ const MoviesCards = ({ allData }) => {
                 isLoading 
                 ? 
                 (
-                    <SkeletonLoader />
+                <SkeletonLoader />
                 )
                 : 
                 (
-                    <div className="imgBox" key={index} onClick={() => { MediaDetailHandler(type, cleanTitle, id) }}>
-                        <Image
-                            priority
-                            src={Image_Base_Url + detail?.poster_path || img}
-                            alt={title}
-                            width={200} // Placeholder width value
-                            height={300} // Placeholder height value
-                        />
-                        <div className='PlayBtn'>
-                            <i className="ri-play-fill"></i>
-                        </div>
+                <div className="imgBox" key={index} onClick={() => { MediaDetailHandler(type, cleanTitle, id) }}>
+                    <Image
+                        priority
+                        src={Image_Base_Url + detail?.poster_path || img}
+                        alt={title}
+                        width={200} // Placeholder width value
+                        height={300} // Placeholder height value
+                    />
+                    <div className='PlayBtn'>
+                        <i className="ri-play-fill"></i>
                     </div>
+                </div>
                 )}
                 <h2 className='title' title={title}>
                     {detail?.title || detail?.name}
@@ -74,5 +75,5 @@ const MoviesCards = ({ allData }) => {
     );
 };
 
-export default MoviesCards;
+export default WatchMoreMoviesCards;
 

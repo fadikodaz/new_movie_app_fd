@@ -98,7 +98,7 @@ const DetailInfoContainer = ({result}) => {
                             <span className="type"><strong>{result.runtime ? 'Duration' : (result.number_of_seasons > 1 ? 'Seasons' : 'Season')}:</strong></span>
                             <span className="value">{result.runtime ? `${result.runtime} min` : `${result.number_of_seasons} (Episodes-${result.number_of_episodes})`}</span>
                         </div>
-                        <di v className="row-line">
+                        <div className="row-line">
                             <span className="type"><strong>Country:</strong></span> 
                             <span className="value">
                                 {result.production_countries?.map((count, index) => (
@@ -107,7 +107,7 @@ const DetailInfoContainer = ({result}) => {
                                     </span>
                                 ))}
                             </span>
-                        </di>
+                        </div>
                         <div className="row-line">
                             <span className="type"><strong>Production:</strong></span> 
                             <span className="value">

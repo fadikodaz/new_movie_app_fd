@@ -13,6 +13,7 @@
 .BackdropImageWrapper .Layer
 {
     position: absolute;
+    z-index: 99;
     top: 0;
     left: 0;
     width: 100%;
@@ -42,16 +43,22 @@
 {
     min-height: 100vh;
     width: 100%;
-    background-color: red;
+    padding: 0 100px;
+}
+.MoreMoviesSection h3
+{
+    font-size: 2em;
+    color: #333;
+    font-weight: 400;
 }
 
 
 
 
 
-
 @media screen and (max-width: 1115px) {
-    .DetailMainCard {
+    .DetailMainCard,
+    .MoreMoviesSection {
         padding: 0 10px;
     }
 }

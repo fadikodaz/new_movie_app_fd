@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #E71D60;
-    padding: 0 30px;
+    padding: 0 100px;
 }
 .logo
 {
@@ -75,6 +75,7 @@
         position: absolute;
         top: -200px;
         left: 0px;
+        z-index: 99;
         padding: 0;
         padding-left: 10px;
         border: 2px solid #ccc;
@@ -123,6 +124,13 @@
         cursor: pointer;
     }
 
+}
+
+
+@media screen and (max-width: 1115px) {
+    .ToHeader {
+        padding: 0 10px;
+    }
 }
 
 @media only screen and (max-width: 486px){
