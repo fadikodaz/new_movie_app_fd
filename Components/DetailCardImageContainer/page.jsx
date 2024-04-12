@@ -2,20 +2,23 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import './ImageContainer.css';
-import img from '@/public/Assets/noPoster.png'
+import noPoster from '@/public/assets/noPoster.png'
 
 const ImageContainer = ({ result }) => {
 
-    const poster = 'https://image.tmdb.org/t/p/original/'+ result?.poster_path;
+    const poster = result.poster_path ? `https://image.tmdb.org/t/p/original/${result?.poster_path}` : noPoster;
     const vote_average = Math.round(result?.vote_average * 10) / 10;
     const voteBarWidth = (vote_average / 10) * 100 + "%";
 
     return (
         <div className='ContainerWrapper'>
             <div className="imgBox">
-                <img
-                    src={poster || img}
+                <Image
+                    priority
                     alt={result?.title}
+                    width={200}
+                    height={300}
+                    src={poster ? poster : noPoster}
                 />
             </div>
             <div className="votingBox">

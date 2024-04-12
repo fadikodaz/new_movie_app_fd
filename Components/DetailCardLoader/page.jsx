@@ -7,11 +7,9 @@ const DetailCardLoader = () => {
     <div className="Watch_add_Btns loadingSkeleton">
         <div className="watchBtn">
             <div className="loadingIcon"></div>
-            <div className="loadingText"></div>
         </div>
         <div className="addBtn">
             <div className="loadingIcon"></div>
-            <div className="loadingText"></div>
         </div>
     </div>
     
@@ -24,16 +22,10 @@ const DetailCardLoader = () => {
     
     <div className="videoType_Btns">
         <div className="trailerBtn loadingSkeleton">
-            <div className="loadingIcon"></div>
-            <div className="loadingText"></div>
         </div>
         <div className="hdBtn loadingSkeleton">
-            <div className="loadingIcon"></div>
-            <div className="loadingText"></div>
         </div>
         <div className="imdbBtn loadingSkeleton">
-            <div className="loadingIcon"></div>
-            <div className="loadingText"></div>
         </div>
     </div>
     

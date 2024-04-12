@@ -11,10 +11,9 @@
 }
 
 .loadingIcon {
-    width: 20px;
-    height: 20px;
+    width: 150px;
+    height: 40px;
     background-color: #ccc;
-    border-radius: 50%;
     margin-right: 10px;
 }
 
@@ -35,44 +34,7 @@
     }
 }
 
-.Watch_add_Btns .loadingSkeleton {
-    display: flex;
-    justify-content: space-between;
-}
 
-.Watch_add_Btns .loadingSkeleton .watchBtn,
-.Watch_add_Btns .loadingSkeleton .addBtn {
-    display: flex;
-    align-items: center;
-}
 
-.watchBtn .loadingIcon,
-.addBtn .loadingIcon {
-    width: 50%;
-    height: 30px;
-}
-
-.watchBtn .loadingText,
-.addBtn .loadingText {
-    width: 50%;
-}
-
-.videoType_Btns .loadingSkeleton {
-    display: flex;
-    justify-content: space-between;
-}
-
-.trailerBtn .loadingIcon,
-.hdBtn .loadingIcon,
-.imdbBtn .loadingIcon {
-    width: 20px;
-    height: 20px;
-}
-
-.trailerBtn .loadingText,
-.hdBtn .loadingText,
-.imdbBtn .loadingText {
-    width: 50px;
-}
 
 /* Adjust loading skeleton styles as needed */

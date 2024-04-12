@@ -1,10 +1,12 @@
 'use client'
-import React, { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
-import '@/style/MovieCards.css';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import SkeletonLoader from '@/Components/CardsSkeletonLoader/page';
 import img from '@/public/Assets/no-poster.png';
+import '@/style/MovieCards.css';
+
 
 const MoviesCards = ({ allData }) => {
     const router = useRouter();
@@ -39,22 +41,24 @@ const MoviesCards = ({ allData }) => {
                 )
                 : 
                 (
-                    <div className="imgBox" key={index} onClick={() => { MediaDetailHandler(type, cleanTitle, id) }}>
-                        <Image
-                            priority
-                            src={Image_Base_Url + detail?.poster_path || img}
-                            alt={title}
-                            width={200} // Placeholder width value
-                            height={300} // Placeholder height value
-                        />
-                        <div className='PlayBtn'>
-                            <i className="ri-play-fill"></i>
-                        </div>
+                <div className="imgBox" key={index} onClick={() => { MediaDetailHandler(type, cleanTitle, id) }}>
+                    <Image
+                        priority
+                        src={Image_Base_Url + detail?.poster_path || img}
+                        alt={title}
+                        width={200} // Placeholder width value
+                        height={300} // Placeholder height value
+                    />
+                    <div className='PlayBtn'>
+                        <i className="ri-play-fill"></i>
                     </div>
+                </div>
                 )}
-                <h2 className='title' title={title}>
-                    {detail?.title || detail?.name}
-                </h2>
+                <Link className='Linktag' href={`/${type}/${cleanTitle}?id=${id}`}>
+                    <h2 className='title' title={title}>
+                        {detail?.title || detail?.name}
+                    </h2>
+                </Link>
                 <div className="Date_Type">
                     <span className='date'>
                         {detail?.release_date || detail?.first_air_date}
