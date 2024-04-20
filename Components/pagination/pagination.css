@@ -1,0 +1,23 @@
+.wrapperBtns button
+{
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.btnActive
+{
+    background-color: #E71D60;
+    color: #fff;
+}
+
+
+.preBtn[disabled] {
+    background-color: #eee;
+    color: #fff;
+    cursor: not-allowed;
+  }

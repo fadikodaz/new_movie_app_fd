@@ -8,13 +8,13 @@ const SkeletonLoader = () => {
         <div className="LoaderimgBox">
             <div className="loader"></div>
         </div>
-        <div className='Loadertitle'>
+        {/* <div className='Loadertitle'>
             <div className="Lineloader"></div>
         </div>
         <div className="LoderDate_Type">
             <div className="Lineloader"></div>
             <div className="Lineloader"></div>
-        </div>
+        </div> */}
     </div>
   )
 }

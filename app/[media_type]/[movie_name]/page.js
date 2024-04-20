@@ -1,19 +1,19 @@
 'use client'
+import './DetailPage.css'
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import WatchMoreMoviesCards from '@/Components/WatchMore/page';
-import DetialCard from '@/Components/DetialMainCard/page';
-import './DetailPage.css'
-import noPoster from '@/public/assets/noPoster.png'
+import noPoster from '@/public/assets/no_thumbnail.jpg';
+import WatchMoreMoviesCards from '@/Components/DetailComponents/WatchMore/page';
+import DetialCard from '@/Components/DetailComponents/DetialMainCard/page';
 
-const page = (params) => {
+const Detailpage = (params) => {
     
-    const [result, setResult] = useState('');
+    const [detailResult, setDetailResult] = useState('');
     const [simillarResults, setSimillarResults] = useState([]);
     const media_type = params?.params?.media_type
-    const type = media_type
+    const type = media_type    //for simillar fetch api 
     const id = params?.searchParams?.id
-    const Backdrop_Image = result?.poster_path ? `https://image.tmdb.org/t/p/original/${result?.poster_path}` : noPoster;
+    const Backdrop_Image = detailResult?.backdrop_path ? `https://image.tmdb.org/t/p/original/${detailResult.backdrop_path}` : noPoster;
 
     // Api Key Oath
     const options = {
@@ -28,21 +28,21 @@ const page = (params) => {
     const  FetchDetailData = async () => {
         const resp = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}`, options)
         const result = await resp.json()
-        setResult(result)
+        setDetailResult(result)
     }
     useEffect(()=>{
       FetchDetailData()
     },[id])
     
-    //Fetching Recomended or Simillar Movies Data
-    const  FetchRecomendedMoviesData = async () => {
-      const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}/recommendations`, options)
+    //Fetching Recomended or Simillar Movies/TvShows Data
+    const  FetchSimillarData = async () => {
+      const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}/${'similar' && 'recommendations'}`, options)
       const data = await resp.json()
       setSimillarResults(data.results)
     }
     useEffect(()=>{
-      FetchRecomendedMoviesData()
-    },[id])
+      FetchSimillarData()
+    },[type,id])
     
 
   return (
@@ -50,14 +50,17 @@ const page = (params) => {
       <div className='MainWrapperDetail'>
       <div className='BackdropImageWrapper'>
             <div className='Layer'> </div>
-            <img
+            <Image
+              priority
+              width={1000}
+              height={1000}
               src={Backdrop_Image}
               alt="poster"
             />
       </div>
         
         <div className='DetailMainCard'>
-              <DetialCard result={result}/>
+              <DetialCard result={detailResult}/>
         </div>
       </div>
       
@@ -70,4 +73,4 @@ const page = (params) => {
   )
 }
 
-export default page
+export default Detailpage

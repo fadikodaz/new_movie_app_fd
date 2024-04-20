@@ -1,8 +1,10 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import SpinnerLoader from '@/Components/spinner/page'
-import SearchMoviesCards from '@/Components/searchMoviesCards/page';
 import './searchPage.css'
+import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+import SpinnerLoader from '@/Components/Spinner/page'
+import noResults from '@/public/assets/no-results.png'
+import SearchMoviesCards from '@/Components/SearchMoviesCards/page';
 
 const SearchPage = ({params}) => {
 
@@ -38,17 +40,35 @@ const SearchPage = ({params}) => {
 
   return (
     <div className='searchWrapper'>
-        <h2>Search {SearchResults.length > 1 ? 'results' : 'result'} for "{cleanTitle}"</h2>
         {
+          SearchResults.length > 0 ?
+          <h2>Search {SearchResults.length > 1 ? 'results' : 'result'} for "{cleanTitle}"</h2>
+          :
+          <h2>Search result not found </h2>
+        }
+        
+        {
+          SearchResults.length > 0 ?
+          (
             isLoading 
             ? 
             (
-                <SpinnerLoader/>
+              <SpinnerLoader/>
             )
             :
             (
-                <SearchMoviesCards allData={SearchResults}/>
+              <SearchMoviesCards allData={SearchResults}/>
             )
+          )
+          :
+          <div className='noResultFoundBox'>
+            <Image 
+              priority 
+              style={{ width: "100%", height: "auto" }}
+              src={noResults} 
+              alt='No Result Found'
+            />
+          </div>
         }
     </div>
   )

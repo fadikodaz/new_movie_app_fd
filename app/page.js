@@ -1,37 +1,16 @@
 'use client'
-import MoviesCards from '@/Components/MoviesCards/page'
+import MoviesCards from '@/Components/Cards/page'
 import React, { useEffect, useState } from 'react'
 
 const Home = () => {
 
+  const [results, setResults] = useState([]);
+  const [active, setActive] = useState(0);
+  const [tvMovie, setTvMovie] = useState('movie');
 
-  // set Button Types id in HOOK STATE for movies and tv shows  
-  const [active, setActive] = useState(() => {
-    // Check if localStorage is available
-    if (typeof window !== 'undefined') {
-      const storedActive = localStorage.getItem('active');
-      return storedActive !== null ? JSON.parse(storedActive) : 0;
-    } else {
-      // Handle case where localStorage is not available
-      return 0;
-    }
-  });
-
-  // Update localStorage whenever active state changes
-  useEffect(() => {
-    // Check if localStorage is available
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('active', JSON.stringify(active));
-    }
-  }, [active]);
-
-  //function geting active value from btn and setting in hook state
   const typeBtnHandler = (id) =>{
     setActive(id)
   }
-
-  // set  Fetching Data in hook state
-  const [results, setResults] = useState([]);
 
   const options = {
     method: 'GET',
@@ -40,9 +19,8 @@ const Home = () => {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NjVlMzUzNWFlM2U4NmY5NWY4ZGExYWNmMzZjNzBhMiIsInN1YiI6IjY0YjI3NzEzZTBjYTdmMDBlNzcxODA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fUUeCiyagBGpxNEfAHWalYWnHTJsuJPs0OTRqSMhw88'
     }
   };
-  
   const fetchApiData = async () => {
-    const resp = await fetch(`https://api.themoviedb.org/3/trending/${active === 1 ? 'tv' : 'movie'}/day?language=en-US`,options)
+    const resp = await fetch(`https://api.themoviedb.org/3/trending/${tvMovie}/day`,options)
     const data = await resp.json()
     setResults(data.results)
   }
@@ -59,10 +37,10 @@ const Home = () => {
             Trending
           </span>
           <div className='typesBtns'>
-              <button onClick={()=>{typeBtnHandler(0)}} className={`${active === 0 ? 'movieBtn': ''}`}>
+              <button onClick={()=>{typeBtnHandler(0),setTvMovie('movie')}} className={`${active === 0 ? 'movieBtn': ''}`}>
                 <i className="ri-play-fill"></i>  Movies
               </button>
-              <button onClick={()=>{typeBtnHandler(1)}} className={`${active === 1 ? 'tvBtn': ''}`}>
+              <button onClick={()=>{typeBtnHandler(1),setTvMovie('tv')}} className={`${active === 1 ? 'tvBtn': ''}`}>
                 <i className="ri-list-check"></i> Tv Shows
               </button>
           </div>
