@@ -69,7 +69,13 @@ const WatchMoreMoviesCards = ({ allData }) => {
 
     return (
         <div className='CardsGridbox'>
-            {cards}
+            {
+                cards.length > 0 
+                ?
+                cards
+                :
+                'There is no similar data '
+            }
         </div>
     );
 };

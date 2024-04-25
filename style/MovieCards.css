@@ -21,7 +21,6 @@
     cursor: pointer;
     overflow: hidden;
     border-radius: 10px;
-    height: auto;
 }
 .imgBox img
 {
@@ -29,6 +28,8 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    min-height: 200px;
+
 }
 .PlayBtn
 {
