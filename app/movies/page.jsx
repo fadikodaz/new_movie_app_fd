@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import '@/style/Allpages.css'
 import Pagination from '@/Components/pagination/page';
-import MoviesPageCards from '@/Components/Movies/page';
+import MoviesCards from '@/Components/MovieCards/page'
 
 
 
@@ -46,7 +46,7 @@ const Movies = () => {
       </div>
 
       <div className='cardsWrapper'>
-        <MoviesPageCards allData={results}/>
+        <MoviesCards allData={results}/>
       </div>
 
     </div>

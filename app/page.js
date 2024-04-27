@@ -1,5 +1,5 @@
 'use client'
-import MoviesCards from '@/Components/Cards/page'
+import MoviesCards from '@/Components/MovieCards/page'
 import React, { useEffect, useState } from 'react'
 
 const Home = () => {

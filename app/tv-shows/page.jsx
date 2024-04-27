@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import '@/style/Allpages.css'
 import Pagination from '@/Components/pagination/page';
-import TvShowPageCards from '@/Components/TvShows/page';
-
+import MoviesCards from '@/Components/MovieCards/page'
 
 
 const TvShow = () => {
@@ -47,7 +46,7 @@ const TvShow = () => {
       </div>
 
       <div className='cardsWrapper'>
-        <TvShowPageCards  allData={results} />
+        <MoviesCards allData={results}/>
       </div>
 
     </div>

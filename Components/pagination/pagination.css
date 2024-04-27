@@ -1,3 +1,7 @@
+.wrapperBtns
+{
+    display: flex;
+}
 .wrapperBtns button
 {
     width: 40px;
