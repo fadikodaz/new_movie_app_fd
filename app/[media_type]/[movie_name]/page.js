@@ -3,7 +3,7 @@ import './DetailPage.css'
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import noPoster from '@/public/assets/no_thumbnail.jpg';
-import WatchMoreMoviesCards from '@/Components/DetailComponents/WatchMore/page';
+import MoviesCards from '@/Components/MovieCards/page'
 import DetialCard from '@/Components/DetailComponents/DetialMainCard/page';
 
 const Detailpage = (params) => {
@@ -36,7 +36,7 @@ const Detailpage = (params) => {
     
     //Fetching Recomended or Simillar Movies/TvShows Data
     const  FetchSimillarData = async () => {
-      const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}/${'similar' && 'recommendations'}`, options)
+      const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}/similar`, options)
       const data = await resp.json()
       setSimillarResults(data.results)
     }
@@ -66,7 +66,7 @@ const Detailpage = (params) => {
       
       <div className='MoreMoviesSection'>
           <h3>You may like these</h3>
-          <WatchMoreMoviesCards allData={simillarResults}/>
+          <MoviesCards allData={simillarResults}/>
       </div>
 
     </>
