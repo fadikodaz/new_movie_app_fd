@@ -28,9 +28,10 @@ const MoviesCards = ({ allData }) => {
         const typeOnPathname = pathName === '/movies' ? 'movie' : 'tv';
         const title = detail?.title || detail?.name;
         const cleanTitle = title.replace(/[ :]+/g, '-');
-        const poster = detail?.poster_path ? 'https://image.tmdb.org/t/p/original/' + detail?.poster_path : noPoster;
+        const poster = detail?.poster_path ? `https://image.tmdb.org/t/p/original${detail?.poster_path}` : noPoster;
         const releaseDate = detail?.release_date  || detail?.first_air_date;
         const year = releaseDate?.slice(0, 4);
+        console.log(poster)
 
         return (
             <div className='CardBox' key={detail?.id}>
@@ -49,7 +50,7 @@ const MoviesCards = ({ allData }) => {
                         src={ poster }
                         alt={title}
                         width={200} // Placeholder width value
-                        height={300} // Placeholder height value
+                        height={200} // Placeholder height value
                     />
                     <div className='PlayBtn'>
                         <i className="ri-play-fill"></i>
