@@ -14,8 +14,8 @@ const SearchMoviesCards = ({ allData }) => {
         const title = detail?.title || detail?.name;
         const cleanTitle = title.replace(/[ :]+/g, '-');
         const poster = detail?.poster_path ? `https://image.tmdb.org/t/p/original/${detail?.poster_path}` : noPoster;
-        const releaseDate = type == 'movie' ? detail?.release_date : detail?.first_air_date;
-        const year = releaseDate.slice(0, 4);
+        const releaseDate = detail?.release_date  || detail?.first_air_date;
+        const year = releaseDate?.slice(0, 4);
 
         return (
             <div className='CardBox' key={detail?.id}>
