@@ -39,6 +39,12 @@ const SearchPage = ({params}) => {
       }, [query])
 
   return (
+    isLoading 
+    ? 
+    (
+      <SpinnerLoader/>
+    )
+    :
     <div className='searchWrapper'>
         {
           SearchResults.length > 0 ?
@@ -46,16 +52,10 @@ const SearchPage = ({params}) => {
           :
           <h2>Search result not found </h2>
         }
-        
         {
           SearchResults.length > 0 ?
           (
-            isLoading 
-            ? 
-            (
-              <SpinnerLoader/>
-            )
-            :
+           
             (
               <SearchMoviesCards allData={SearchResults}/>
             )
