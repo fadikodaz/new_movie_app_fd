@@ -30,7 +30,7 @@ const MoviesCards = ({ allData }) => {
         const cleanTitle = title.replace(/[ :]+/g, '-');
         const poster = detail?.poster_path ? `https://image.tmdb.org/t/p/original${detail?.poster_path}` : noPoster;
         const releaseDate = detail?.release_date  || detail?.first_air_date;
-        const year = releaseDate?.slice(0, 4);
+        const year = releaseDate?.slice(0, 4) || releaseDate;
         console.log(poster)
 
         return (
