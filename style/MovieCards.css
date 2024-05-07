@@ -63,6 +63,10 @@
 {
     text-decoration: none;
 }
+.title:hover
+{
+    color: #E71D60;
+}
 .title
 {
     cursor: pointer;

@@ -36,7 +36,7 @@ const Detailpage = (params) => {
     
     //Fetching Recomended or Simillar Movies/TvShows Data
     const  FetchSimillarData = async () => {
-      const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}/similar`, options)
+      const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}/recommendations`, options)
       const data = await resp.json()
       setSimillarResults(data.results)
     }
@@ -60,7 +60,7 @@ const Detailpage = (params) => {
       </div>
         
         <div className='DetailMainCard'>
-              <DetialCard result={detailResult}/>
+          <DetialCard result={detailResult}/>
         </div>
       </div>
       

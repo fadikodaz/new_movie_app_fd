@@ -43,7 +43,7 @@ const MoviesCards = ({ allData }) => {
                 : 
                 (
                 <div className="imgBox">
-                <Link className='Linktag' href={`/${type}/${cleanTitle}?id=${id}`}>
+                <Link className='Linktag' href={`/${type || typeOnPathname}/${cleanTitle}?id=${id}`}>
                     <Image
                         priority
                         src={ poster }
